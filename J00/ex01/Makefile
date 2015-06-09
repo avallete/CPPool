@@ -11,13 +11,15 @@
 # **************************************************************************** #
 
 SRC_PATH:=./src/
-SRC_NAME:=Contact.class.cpp\
+SRC_NAME:=	Contact.class.cpp\
+			Book.class.cpp\
 			N3310.cpp
 CFLAGS=-Wall -Wextra -Werror
 OBJ_PATH=./obj/
 OBJ_NAME=$(SRC_NAME:.cpp=.o)
 INC_PATH=./includes/
-INC_NAME=Contact.class.hpp\
+INC_NAME=	Contact.class.hpp\
+			Book.class.hpp\
 			N3310.h
 SRC=$(addprefix $(SRC_PATH), $(SRC_NAME))
 OBJ=$(addprefix $(OBJ_PATH), $(OBJ_NAME))

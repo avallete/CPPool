@@ -12,5 +12,5 @@
 
 #ifndef N3310_H
 #define N3310_H
-#include "Contact.class.hpp"
+#include "Book.class.hpp"
 #endif

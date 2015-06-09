@@ -1,20 +1,24 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   N3310.cpp                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: avallete <avallete@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/06/08 18:08:53 by avallete          #+#    #+#             */
-/*   Updated: 2015/06/08 18:39:14 by avallete         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "N3310.h"
 
 int main(void)
 {
-    Contact test;
-    test.get_infos();
+    Book test;
+    std::string cmd;
+    int next;
+
+    next = 1;
+    while (next)
+    {
+    	std::cout << "Enter Your Command (ADD | SEARCH | EXIT) : ";
+    	next = getline(std::cin, cmd);
+    	if (cmd == "SEARCH")
+    		test.search();
+    	else if (cmd == "ADD")
+    		test.add();
+    	else if (cmd == "EXIT")
+    		next = 0;
+    	else if (next)
+    		std::cout << "Sorry bad input, try again :)" << std::endl;
+    }
     return (0);
 }
