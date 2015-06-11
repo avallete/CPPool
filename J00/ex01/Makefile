@@ -11,16 +11,16 @@
 # **************************************************************************** #
 
 SRC_PATH:=./src/
-SRC_NAME:=	Contact.class.cpp\
-			Book.class.cpp\
-			N3310.cpp
+SRC_NAME:=Contact.class.cpp\
+	Book.class.cpp\
+	N3310.cpp
 CFLAGS=-Wall -Wextra -Werror
 OBJ_PATH=./obj/
 OBJ_NAME=$(SRC_NAME:.cpp=.o)
 INC_PATH=./includes/
-INC_NAME=	Contact.class.hpp\
-			Book.class.hpp\
-			N3310.h
+INC_NAME=Contact.class.hpp\
+	Book.class.hpp\
+	N3310.h
 SRC=$(addprefix $(SRC_PATH), $(SRC_NAME))
 OBJ=$(addprefix $(OBJ_PATH), $(OBJ_NAME))
 INCF=$(addprefix $(INC_PATH), $(INC_NAME))
@@ -37,12 +37,12 @@ all: $(NAME)
 
 $(NAME):$(OBJ)
 	@echo "${GREEN}Compile $(NAME) with $(CFLAGS)${NC}";
-	@$(CC) $(CFLAGS) -I $(INC_PATH) $(OBJ) -o $(NAME)
+	@$(CC) $(CFLAGS) $(OBJ) -I $(INC_PATH) -o $(NAME)
 
 $(OBJ_PATH)%.o: $(SRC_PATH)%.cpp
 	@mkdir -p $(OBJ_PATH)
 	@echo "${ORANGE}Create bynary $(NAME) : $@ with $<${NC}";
-	@$(CC) -I $(INC_PATH) $(CFLAGS) -o $@ -c $<
+	@$(CC) $(CFLAGS) -c $< -I $(INC_PATH) -o $@
 
 clean:
 	@echo "${RED} Delete OBJ files ${NC}"

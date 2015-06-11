@@ -10,7 +10,8 @@ int main(void)
     while (next)
     {
     	std::cout << "Enter Your Command (ADD | SEARCH | EXIT) : ";
-    	next = getline(std::cin, cmd);
+    	if (!getline(std::cin, cmd))
+            next = 0;
     	if (cmd == "SEARCH")
     		test.search();
     	else if (cmd == "ADD")
