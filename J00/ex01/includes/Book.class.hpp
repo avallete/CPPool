@@ -6,8 +6,8 @@ class Book
 	public:
 					Book();
 					~Book();
-		void		search(void);
 		void 		add(void);
+		void		search(void) const;
 	private:
 		Contact		_list[8];
 		static int	_index;

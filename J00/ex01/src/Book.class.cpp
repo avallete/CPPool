@@ -20,7 +20,7 @@
 		else
 			std::cout << "Sorry your BookPhone is full, for 300$ you can buy one another" << std::endl;
 	}
-	void Book::search(void)
+	void Book::search(void) const
 	{
 		int			i;
 		std::string	nb;
