@@ -17,7 +17,7 @@ void    HumanB::attack(void) const
     return;
 }
 
-void    HumanB::setWeapon(Weapon arm)
+void    HumanB::setWeapon(Weapon& arm)
 {
     this->_weapon = &arm;
     return;
