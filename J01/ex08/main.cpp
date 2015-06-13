@@ -8,6 +8,6 @@ int main(void)
 
 	Cartman.action("intimidatingShout", Kenny.get_name());
 	Cartman.action("intimidatingShout", Stan.get_name());
-	Stan.ation("meleeAttack", Cartman.get_name());
+	Stan.action("meleeAttack", Cartman.get_name());
 	Kenny.action("rangedAttack", Cartman.get_name());
 }
