@@ -2,6 +2,7 @@
 #define FRAG_TRAP_HPP
 #include <iostream>
 #include <string>
+#include <cstdlib>
 
 class FragTrap
 {

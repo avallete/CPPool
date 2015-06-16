@@ -1,22 +1,24 @@
-#ifndef SCAV_TRAP_HPP
-#define SCAV_TRAP_HPP
+#ifndef CLAP_TRAP_HPP
+#define CLAP_TRAP_HPP
 #include <iostream>
 #include <string>
 #include <cstdlib>
 
-class ScavTrap
+class ClapTrap
 {
 	public:
-		ScavTrap(std::string name);
-		ScavTrap(ScavTrap const & src);
-		~ScavTrap(void);
-
-		ScavTrap& operator=(ScavTrap const & rhs);
+		ClapTrap(unsigned int hitpts, unsigned int maxhit, unsigned int enepts,
+					unsigned int maxene, unsigned int level, unsigned int melatk, unsigned int rgsatk,
+					unsigned int armor, std::string name);
+		ClapTrap(ClapTrap const & src);
+		ClapTrap(void);
+		~ClapTrap(void);
 		void			rangedAttack(std::string const &target);
 		void			meleeAttack(std::string const &target);
 		void			takeDamage(unsigned int amount);
 		void			beRepaired(unsigned int amount);
-		void			challengeNewcomer(void) const;
+		void			setEnepts(unsigned int amount);
+		ClapTrap& 		operator=(ClapTrap const & rhs);
 		unsigned int 	getHitpts(void) const;
 		unsigned int 	getMaxhit(void) const;
 		unsigned int 	getEnepts(void) const;
@@ -28,7 +30,6 @@ class ScavTrap
 		std::string		getName(void) const;
 		void			display_infos(void) const;
 	private:
-		ScavTrap(void);
 		unsigned int _hitpts;
 		unsigned int _maxhit;
 		unsigned int _enepts;

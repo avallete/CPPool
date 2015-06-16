@@ -2,6 +2,7 @@
 #define CLAP_TRAP_HPP
 #include <iostream>
 #include <string>
+#include <cstdlib>
 
 class ClapTrap
 {
