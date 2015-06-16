@@ -4,6 +4,8 @@
 #include <string>
 #include <cstdlib>
 #include "ClapTrap.hpp"
+#include "FragTrap.hpp"
+#include "ScavTrap.hpp"
 
 class NinjaTrap : public ClapTrap
 {
@@ -11,8 +13,10 @@ class NinjaTrap : public ClapTrap
         NinjaTrap(std::string name);
         NinjaTrap(NinjaTrap const & src);
         ~NinjaTrap(void);
-
-        void            vaulthunter_dot_exe(std::string const & target);
+        void            ninjaShoebox(ClapTrap & clap);
+        void            ninjaShoebox(FragTrap & frag);
+        void            ninjaShoebox(ScavTrap & scav);
+        void            ninjaShoebox(NinjaTrap & scav);
     private:
         NinjaTrap(void);
 

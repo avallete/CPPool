@@ -14,9 +14,9 @@ NinjaTrap::NinjaTrap(std::string name): ClapTrap( 60, 60, 120, 120, 1, 60, 5, 0,
     return;
 }
 
-NinjaTrap::NinjaTrap(NinjaTrap const & src)
+NinjaTrap::NinjaTrap(NinjaTrap const & src): ClapTrap(src)
 {
-    std::cout << "FR4G-TP copy contructor called" << std::endl;
+    std::cout << "Ninja copy contructor called" << std::endl;
     *this = src;
     return;
 }
@@ -27,17 +27,30 @@ NinjaTrap::~NinjaTrap(void)
     return;
 }
 
-void            NinjaTrap::vaulthunter_dot_exe(std::string const & target)
+void            NinjaTrap::ninjaShoebox(ClapTrap & clap)
 {
-    std::string attaks[9] =     {"Flesh fireworks!", "Meat confetti!", "It's the only way to stop the voices!",
-                                "Lasers!", "You can call me Gundalf!", "Kill! Reload! Kill! Reload! KILL! RELOAD!",
-                                "Get away from me!", "Hyperiooooon Punch!", "I am a tornado of death and bullets!"};
-    if (this->getEnepts() >= 25)
-    {
-        std::cout << "FR4G-TP attacks " << target << " and 5cr34m5: " << attaks[std::rand() % 8] << "." << std::endl;
-        this->setEnepts(this->getEnepts() - 25);
-    }
-    else
-        std::cout << this->getName() << " don't have enouth energy for that." << std::endl;
+    (void)clap;
+    std::cout << "NinjaTrap " << this->getName() << " ask: You are my father ?!" << std::endl;
+    return;
+}
+
+void            NinjaTrap::ninjaShoebox(FragTrap & frag)
+{
+    (void)frag;
+    std::cout << "NinjaTrap " << this->getName() << " ask: Seriously ? You have \"Frag\" in your name ? How old are you Kevin ?!" << std::endl;
+    return;
+}
+
+void            NinjaTrap::ninjaShoebox(ScavTrap & scav)
+{
+    (void)scav;
+    std::cout << "NinjaTrap " << this->getName() << " say: Attaque de l'orbe tourbillonnate !!! Fucking french, that doesn't work !  ***RASENGAN***" << std::endl;
+    return;
+}
+
+void            NinjaTrap::ninjaShoebox(NinjaTrap & ninja)
+{
+    (void)ninja;
+    std::cout << "NinjaTrap " << this->getName() << " and NinjaTrap " << ninja.getName() << " look at each other. Shake their heads and look up to you. You feel the need to go ... NOW !!!" << std::endl;
     return;
 }

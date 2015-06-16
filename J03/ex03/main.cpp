@@ -1,5 +1,6 @@
 #include "FragTrap.hpp"
 #include "ScavTrap.hpp"
+#include "NinjaTrap.hpp"
 
 int main(void)
 {
@@ -7,6 +8,8 @@ int main(void)
 	FragTrap clap2(clap);
 	FragTrap trap("Trap");
 	ScavTrap scav("Scav");
+	NinjaTrap naruto("Naruto");
+	NinjaTrap sasuke("Sasuke");
 
 	clap.display_infos();
 	clap2.display_infos();
@@ -30,58 +33,15 @@ int main(void)
 	std::cout << "Energie pts : " << clap.getEnepts() << std::endl;
 	clap.vaulthunter_dot_exe("some badass");
 	clap.vaulthunter_dot_exe("some badass");
-	clap.vaulthunter_dot_exe("some badass");
-	clap.vaulthunter_dot_exe("some badass");
-	clap.vaulthunter_dot_exe("some badass");
-	clap.vaulthunter_dot_exe("some badass");
-	trap.vaulthunter_dot_exe("a little pony");
-	trap.vaulthunter_dot_exe("a little pony");
-	trap.vaulthunter_dot_exe("a little pony");
-	trap.vaulthunter_dot_exe("a little pony");
 	trap.vaulthunter_dot_exe("a little pony");
 	trap.vaulthunter_dot_exe("a little pony");
 	scav.display_infos();
 	scav.challengeNewcomer();
 	scav.challengeNewcomer();
 	scav.challengeNewcomer();
-	scav.challengeNewcomer();
-	scav.challengeNewcomer();
-	scav.challengeNewcomer();
-	scav.challengeNewcomer();
-	scav.challengeNewcomer();
-	scav.challengeNewcomer();
-	scav.challengeNewcomer();
-	scav.challengeNewcomer();
-	scav.challengeNewcomer();
-	scav.challengeNewcomer();
-	scav.challengeNewcomer();
-	scav.challengeNewcomer();
-	scav.challengeNewcomer();
-	scav.challengeNewcomer();
-	scav.challengeNewcomer();
-	scav.challengeNewcomer();
-	scav.challengeNewcomer();
-	scav.challengeNewcomer();
-	scav.challengeNewcomer();
-	scav.challengeNewcomer();
-	scav.challengeNewcomer();
-	scav.challengeNewcomer();
-	scav.challengeNewcomer();
-	scav.challengeNewcomer();
-	scav.challengeNewcomer();
-	scav.challengeNewcomer();
-	scav.challengeNewcomer();
-	scav.challengeNewcomer();
-	scav.challengeNewcomer();
-	scav.challengeNewcomer();
-	scav.challengeNewcomer();
-	scav.challengeNewcomer();
-	scav.challengeNewcomer();
-	scav.challengeNewcomer();
-	scav.challengeNewcomer();
-	scav.challengeNewcomer();
-	scav.challengeNewcomer();
-	scav.challengeNewcomer();
 	FragTrap clp("test");
 	ScavTrap scv("test");
+	naruto.ninjaShoebox(clap);
+	naruto.ninjaShoebox(scav);
+	naruto.ninjaShoebox(sasuke);
 }

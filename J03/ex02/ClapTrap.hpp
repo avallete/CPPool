@@ -38,6 +38,6 @@ class ClapTrap
 		unsigned int _melatk;
 		unsigned int _rgsatk;
 		unsigned int _armor;
-		std::string _name;	
+		std::string _name;
 };
 #endif

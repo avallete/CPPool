@@ -21,6 +21,12 @@ ClapTrap::ClapTrap(unsigned int hitpts, unsigned int maxhit, unsigned int enepts
 	return;
 }
 
+ClapTrap::ClapTrap(ClapTrap const & src)
+{
+	*this = src;
+	return;
+}
+
 ClapTrap& ClapTrap::operator=(ClapTrap const & rhs)
 {
 	std::cout << "Assignation operator overload" << std::endl;
@@ -42,7 +48,7 @@ void			ClapTrap::rangedAttack(std::string const &target)
 	{
 		std::cout << this->_name << " attacks " << target << " at range, causing " << getRgsatk() << " damages" << std::endl;
 		this->_enepts -= 25;
-	}	
+	}
 	else
 		std::cout << this->_name << " don't have enouth energy for that." << std::endl;
 	return;
@@ -54,7 +60,7 @@ void			ClapTrap::meleeAttack(std::string const &target)
 	{
 		std::cout << this->_name << " attacks " << target << " at melee, causing " << getMelatk() << " damages" << std::endl;
 		this->_enepts -= 25;
-	}	
+	}
 	else
 		std::cout << this->_name << " don't have enouth energy for that." << std::endl;
 	return;
@@ -66,7 +72,7 @@ void			ClapTrap::takeDamage(unsigned int amount)
 		amount -= this->_armor;
 	std::cout << this->_name << " receive " << amount << " damages." << std::endl;
 	this->_hitpts >= amount ? this->_hitpts -= amount : (this->_hitpts = 0);
-	return;	
+	return;
 }
 
 void			ClapTrap::beRepaired(unsigned int amount)
