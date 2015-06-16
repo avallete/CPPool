@@ -3,6 +3,8 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <sys/types.h>
+#include <sys/stat.h>
 
 class Cat
 {
@@ -12,6 +14,7 @@ public:
                 ~Cat(void);
     void        readToFile(void);
     void        readToStdo(void);
+    void		setFile(char *filename);
 private:
     std::ifstream   _file;
     std::string     _filename;

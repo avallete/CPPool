@@ -1,17 +1,29 @@
-#include "Loger.hpp"
+#include "Cat.hpp"
 
-int main(void)
+int main(int ac, char **av)
 {
-    Loger test("testlog.txt");
-    std::string mode[2] = {"file", "console"};
-    std::string mess[4] = {"Okay a little log mess", "and an another", "Unicorn is the definition of dickhead", "Ohhh, i'm late !!!"};
-    test.log(mode[0] , mess[0]);
-    test.log(mode[0] , mess[1]);
-    test.log(mode[0] , mess[2]);
-    test.log(mode[0] , mess[3]);
-    test.log(mode[1] , mess[0]);
-    test.log(mode[1] , mess[1]);
-    test.log(mode[1] , mess[2]);
-    test.log(mode[1] , mess[3]);
+    std::string input;
+    Cat         *files;
+    int         i;
+
+    i = 0;
+    if (ac >= 2)
+    {
+        av++;
+        files = new Cat[ac - 1];
+        while (*av)
+        {
+            files[i].setFile(*av);
+            files[i].readToFile();
+            i++;
+            av++;
+        }
+        delete [] files;
+    }
+    else
+    {
+        while (getline(std::cin, input))
+            std::cout << input << std::endl;
+    }
     return 0;
 }
