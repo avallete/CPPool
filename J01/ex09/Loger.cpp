@@ -10,7 +10,8 @@ Loger::Loger(std::string const & filename)
 
 Loger::~Loger(void)
 {
-    this->_logfile.close();
+    if (this->_logfile.is_open())
+        this->_logfile.close();
     return;
 }
 
