@@ -4,6 +4,7 @@
 int main( void ) 
 {
 	Fixed a;
+	Fixed z(0);
 	Fixed const b( Fixed( 5.05f ) * Fixed( 2 ) );
 	std::cout << a << std::endl;
 	std::cout << ++a << std::endl;
@@ -30,6 +31,9 @@ int main( void )
 	std::cout << (d >= c) << std::endl;
 	std::cout << (d != c) << std::endl;
 	std::cout << (d == c) << std::endl;
+	std::cout << "zero test" << std::endl;
+	std::cout << (d / z) << std::endl;
+	std::cout << (d * z) << std::endl;
 	std::cout << Fixed::max( c, d ) << std::endl;
 	std::cout << Fixed::min( c, d ) << std::endl;
 	return 0;

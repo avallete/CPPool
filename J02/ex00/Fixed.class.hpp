@@ -13,6 +13,6 @@ class Fixed
 		int		getRawBits(void) const;
 	private:
 		int			_raw;
-		int const	_fix;
+		static const int	_fix;
 };
 #endif

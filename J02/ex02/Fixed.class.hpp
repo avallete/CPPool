@@ -34,7 +34,7 @@ class Fixed
 		float					toFloat(void) const;
 		int						toInt(void) const;
 	private:
-		int const				_fix;
+		static int const		_fix;
 		int						_raw;
 };
 		std::ostream&			operator<<(std::ostream& o, Fixed const & rhs);
