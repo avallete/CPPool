@@ -35,6 +35,7 @@ void replace(std::string filename, std::string s1, std::string s2)
             while ((pos = file.find(s1)) != std::string::npos)
                 file.replace(pos, s1.length(), s2);
             fs.close();
+			filename += ".replace";
             out.open(filename.data());
             if (out.is_open())
             {
