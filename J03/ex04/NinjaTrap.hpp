@@ -7,9 +7,10 @@
 #include "FragTrap.hpp"
 #include "ScavTrap.hpp"
 
-class NinjaTrap : public ClapTrap
+class NinjaTrap : public virtual ClapTrap
 {
     public:
+        NinjaTrap(void);
         NinjaTrap(std::string name);
         NinjaTrap(NinjaTrap const & src);
         ~NinjaTrap(void);
@@ -19,8 +20,5 @@ class NinjaTrap : public ClapTrap
         void            ninjaShoebox(NinjaTrap & scav);
 
         NinjaTrap&       operator=(NinjaTrap const & rhs);
-    private:
-        NinjaTrap(void);
-
 };
 #endif

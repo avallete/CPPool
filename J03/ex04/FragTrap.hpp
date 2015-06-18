@@ -5,17 +5,15 @@
 #include <cstdlib>
 #include "ClapTrap.hpp"
 
-class FragTrap : public ClapTrap
+class FragTrap : public virtual ClapTrap
 {
 	public:
+		FragTrap(void);
 		FragTrap(std::string name);
 		FragTrap(FragTrap const & src);
 		~FragTrap(void);
 
 		void			vaulthunter_dot_exe(std::string const & target);
 		FragTrap& 		operator=(FragTrap const & rhs);
-	private:
-		FragTrap(void);
-
 };
 #endif

@@ -1,6 +1,7 @@
 #include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap(void)
+ClapTrap::ClapTrap(void):_hitpts(0), _maxhit(0), _enepts(0), _maxene(0),
+					_level(0), _melatk(0), _rgsatk(0), _armor(0), _name("")
 {
 	std::cout << "Default ClapTrap constructor called" << std::endl;
 	return;

@@ -1,17 +1,19 @@
 #include "FragTrap.hpp"
 #include "ScavTrap.hpp"
 #include "NinjaTrap.hpp"
+#include "SuperTrap.hpp"
 
 int main(void)
 {
 	FragTrap clap("Clap");
-	FragTrap clap2(clap);
+/*	FragTrap clap2(clap);
 	FragTrap trap("Trap");
 	ScavTrap scav("Scav");
 	NinjaTrap naruto("Naruto");
-	NinjaTrap sasuke("Sasuke");
+	NinjaTrap sasuke("Sasuke");*/
+	SuperTrap Super("Power");
 
-	clap.display_infos();
+/*	clap.display_infos();
 	clap2.display_infos();
 	trap.display_infos();
 	clap2 = trap;
@@ -43,5 +45,11 @@ int main(void)
 	ScavTrap scv("test");
 	naruto.ninjaShoebox(clap);
 	naruto.ninjaShoebox(scav);
-	naruto.ninjaShoebox(sasuke);
+	naruto.ninjaShoebox(sasuke);*/
+	std::cout << "\n\nTest for SUPERCLAP\n\n" << std::endl;
+	Super.display_infos();
+	Super.ninjaShoebox(clap);
+	Super.vaulthunter_dot_exe(" a cute baby cat.");
+	Super.rangedAttack("Somone");
+	Super.meleeAttack("Someone close");
 }
