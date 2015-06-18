@@ -13,11 +13,11 @@ Fixed::Fixed(Fixed const & src): _fix(8)
 	*this = src;
 	return;
 }
-Fixed::Fixed(int const nb): _fix(8), _raw(roundf((pow(2, _fix) * nb)))
+Fixed::Fixed(int const nb): _fix(8), _raw(roundf((1 << _fix) * nb))
 {
 	return;
 }
-Fixed::Fixed(float const nb): _fix(8), _raw(roundf(((pow(2, _fix) * nb))))
+Fixed::Fixed(float const nb): _fix(8), _raw(roundf(((1 << _fix) * nb)))
 {
 	return;
 }
@@ -57,10 +57,10 @@ void	Fixed::setRawBits(int const raw)
 
 float	Fixed::toFloat(void) const
 {
-	return (1 / pow(2, this->_fix) * this->_raw);
+	return (this->_raw / (double)(1 << this->_fix));
 }
 
 int		Fixed::toInt(void) const
 {
-	return (1 / pow(2, this->_fix) * this->_raw);
+	return (this->_raw / (1 << this->_fix));
 }

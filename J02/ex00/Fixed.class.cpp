@@ -1,5 +1,4 @@
 #include "Fixed.class.hpp"
-#include <iostream>
 
 Fixed::Fixed(void): _raw(0), _fix(8)
 {

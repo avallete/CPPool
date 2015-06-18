@@ -13,11 +13,11 @@ Fixed::Fixed(Fixed const & src): _fix(8)
 	*this = src;
 	return;
 }
-Fixed::Fixed(int const nb): _fix(8), _raw(roundf((pow(2, _fix) * nb)))
+Fixed::Fixed(int const nb): _fix(8), _raw(roundf(((1 << _fix) * nb)))
 {
 	return;
 }
-Fixed::Fixed(float const nb): _fix(8), _raw(roundf(((pow(2, _fix) * nb))))
+Fixed::Fixed(float const nb): _fix(8), _raw(roundf(((1 << _fix) * nb)))
 {
 	return;
 }
@@ -44,12 +44,12 @@ void	Fixed::setRawBits(int const raw)
 
 float	Fixed::toFloat(void) const
 {
-	return (1 / pow(2, this->_fix) * this->_raw);
+	return (this->_raw / (double)(1 << this->_fix));
 }
 
 int		Fixed::toInt(void) const
 {
-	return (1 / pow(2, this->_fix) * this->_raw);
+	return (this->_raw / (1 << this->_fix));
 }
 
 Fixed&			Fixed::min(Fixed const & f1, Fixed const & f2)
@@ -116,28 +116,20 @@ Fixed					Fixed::operator--(int)
 
 Fixed					Fixed::operator*(Fixed const & rhs)
 {
-	Fixed ret(this->toFloat() * rhs.toFloat());
-//	std::cout << "Multiplication operator overload" << std::endl;
-	return (ret);
+	return (Fixed(this->toFloat() * rhs.toFloat()));
 }
 
 Fixed					Fixed::operator/(Fixed const & rhs)
 {
-	Fixed ret(this->toFloat() / rhs.toFloat());
-//	std::cout << "Divide operator overload" << std::endl;
-	return (ret);
+	return(Fixed(this->toFloat() / rhs.toFloat()));
 }
 Fixed					Fixed::operator+(Fixed const & rhs)
 {
-	Fixed ret(this->toFloat() + rhs.toFloat());
-//	std::cout << "Add operator overload" << std::endl;
-	return (ret);
+	return(Fixed(this->toFloat() + rhs.toFloat()));
 }
 Fixed					Fixed::operator-(Fixed const & rhs)
 {
-	Fixed ret(this->toFloat() - rhs.toFloat());
-//	std::cout << "Soustr operator overload" << std::endl;
-	return (ret);
+	return(Fixed(this->toFloat() - rhs.toFloat()));
 }
 
 bool					Fixed::operator>(Fixed const & rhs)
