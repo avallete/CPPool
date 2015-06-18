@@ -12,6 +12,7 @@ class ScavTrap: public ClapTrap
 		~ScavTrap(void);
 
 		void			challengeNewcomer(void) const;
+		ScavTrap& operator=(ScavTrap const & rhs);
 	private:
 		ScavTrap(void);
 };

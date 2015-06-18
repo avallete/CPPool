@@ -37,3 +37,9 @@ void			ScavTrap::challengeNewcomer(void) const
 		std::cout << "ScavTrap try to " << challenge[std::rand() % 8] << ". And after that he said: " << result[std::rand() % 8] << '.' << std::endl;
 	return;
 }
+
+ScavTrap&		ScavTrap::operator=(ScavTrap const & rhs)
+{
+	ClapTrap::operator=(rhs);
+	return(*this);
+}

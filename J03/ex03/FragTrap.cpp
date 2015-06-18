@@ -41,3 +41,9 @@ void			FragTrap::vaulthunter_dot_exe(std::string const & target)
 		std::cout << this->getName() << " don't have enouth energy for that." << std::endl;
 	return;
 }
+
+FragTrap&		FragTrap::operator=(FragTrap const & rhs)
+{
+	ClapTrap::operator=(rhs);
+	return(*this);
+}
