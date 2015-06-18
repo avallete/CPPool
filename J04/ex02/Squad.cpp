@@ -18,7 +18,11 @@ Squad::~Squad(void)
 	if (this->_squad)
 	{
 		for (int i = 0; i < this->_count; ++i)
-			delete this->_squad[i];
+		{
+			if (this->_squad[i])
+				delete this->_squad[i];
+		}
+		delete [] this->_squad;
 	}
 	return;
 }
@@ -31,9 +35,7 @@ int				Squad::getCount(void) const
 ISpaceMarine*	Squad::getUnit(int i)
 {
 	if (i >= 0 && i <= this->_count)
-	{
 		return (this->_squad[i]);
-	}
 	return (0);
 }
 

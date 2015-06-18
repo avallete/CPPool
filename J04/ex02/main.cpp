@@ -7,12 +7,14 @@ int main()
 	ISpaceMarine* bob = new TacticalMarine;
 	ISpaceMarine* tom = new TacticalMarine;
  	ISpaceMarine* jim = new AssaultTerminator;
+ 	ISpaceMarine* bim = new AssaultTerminator;
 	ISquad* vlc = new Squad;
 	ISquad* v2 = vlc;
 	ISquad* v3(v2);
 	vlc->push(bob);
 	vlc->push(jim);
 	vlc->push(tom);
+	vlc->push(bim);
 	for (int i = 0; i < vlc->getCount(); ++i)
 	{
 		ISpaceMarine* cur = vlc->getUnit(i);
@@ -35,6 +37,6 @@ int main()
 		cur->meleeAttack();
 	}
 	delete vlc;
-	delete v3;
+	while (1);
 	return 0; 
 }
