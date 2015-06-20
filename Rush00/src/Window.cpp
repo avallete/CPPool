@@ -47,9 +47,9 @@ void	Window::printBorder(void)
 	for (int i = 0; i < m_sizex; i++)
 		mvprintw(getY(), i, "-");	
 	for (int i = 0; i < m_sizex; i++)
-		mvprintw(i, 0, "-");	
+		mvprintw(i, 0, "|");	
 	for (int i = 0; i < m_sizex; i++)
-		mvprintw(i, getX(), "-");	
+		mvprintw(i, getX(), "|");	
 }
 
 void 	Window::takeSize(void)

@@ -5,13 +5,14 @@ void play(void)
 {
 	Window win;
 	Player		p(win);
-	EnnemyHorde n = EnnemyHorde(10, "^v^");
+	EnnemyHorde n = EnnemyHorde(100, "^v^");
 	n.randomPOP(win);
 	int	input = 0;
-	while (input != KEY_ECHAP)
+	while (input != KEY_ECHAP && p.getHP() > 0)
 	{
 		clear();
 		input = getch();
+		p.checkEnemies(n.getHorde(), n.getNumber(), win);
 		win.takeSize();
 		win.printBorder();
 		n.printit(win);

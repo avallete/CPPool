@@ -17,6 +17,7 @@ class EnnemyHorde: public AObject
 		void			respawn(void);
 		EnnemyHorde*	getHorde(void);
 		int				getNumber(void);
+		void			die(Window& win);
 
 		EnnemyHorde& operator=(EnnemyHorde const & rhs);
 	private:

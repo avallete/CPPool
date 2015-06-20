@@ -92,6 +92,27 @@ void					AObject::setForm(std::string form)
 	return;
 }
 
+void					AObject::explode(Window& win)
+{
+	mvwprintw(win.getWin(), m_posy - 1, m_posx, ".!,");
+	mvwprintw(win.getWin(), m_posy, m_posx, "-*-");
+	mvwprintw(win.getWin(), m_posy + 1, m_posx, "'|`");
+	refresh();
+	usleep(100);
+	mvwprintw(win.getWin(), m_posy - 1, m_posx - 1, "\\ | /");
+	mvwprintw(win.getWin(), m_posy, m_posx - 1, "- * -");
+	mvwprintw(win.getWin(), m_posy + 1, m_posx - 1, "'/ | \\");
+	refresh();
+	usleep(100);
+	mvwprintw(win.getWin(), m_posy - 2, m_posx - 1, ". . .");
+	mvwprintw(win.getWin(), m_posy - 1, m_posx, "\\|/");
+	mvwprintw(win.getWin(), m_posy, m_posx - 2, "`--+--'");
+	mvwprintw(win.getWin(), m_posy + 1, m_posx, " /|\\ ");
+	mvwprintw(win.getWin(), m_posy + 2, m_posx - 1, "' | '");
+	refresh();
+	usleep(100);
+}
+
 void					AObject::move(Window& win)
 {
 

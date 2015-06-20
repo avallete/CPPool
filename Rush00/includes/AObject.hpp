@@ -27,6 +27,7 @@ class AObject
 		void					move(Window& win);
 		virtual void			printit(Window& win) const;
 		virtual void			colision(AObject& obj);
+		void					explode(Window& win);
 
 		AObject& operator=(AObject const & rhs);
 	protected:

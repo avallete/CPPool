@@ -60,6 +60,17 @@ void		 EnnemyHorde::respawn(void)
 		m_hp = 1;
 }
 
+void		EnnemyHorde::die(Window& win)
+{
+	this->AObject::explode(win);
+	refresh();
+	usleep(10);
+	this->setPos(rand()%(win.getX() - m_sizex), rand() % (win.getY() / 4));
+	this->setDir(0, 1);
+	this->setSpeed(0);
+	m_hp = 1;
+}
+
 void		EnnemyHorde::printit(Window& win) const
 {
 	for (int i = 0; i < m_number; i++)
