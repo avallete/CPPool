@@ -28,9 +28,9 @@ void Player::inputDirection(int ch)
 	else if (ch == 258)
 		m_diry = 1;
 	else if (ch == 260)
-		m_dirx = -1;
+		m_dirx = -2;
 	else if (ch == 261)
-		m_dirx = 1;
+		m_dirx = 2;
 }
 
 void Player::move(Window& win)
@@ -59,7 +59,7 @@ void Player::checkEnemies(EnnemyHorde* horde, int N, Window& win)
 			center = horde[i].getX() - (horde[i].getsizeX() / 2);
 			centerv = m_posx - (m_sizex / 2);
 			centerv -= center;
-			if (abs(centerv) < m_sizex)
+			if (abs(centerv) <= m_sizex)
 			{
 				m_hp -= 1;
 				horde[i].die(win);

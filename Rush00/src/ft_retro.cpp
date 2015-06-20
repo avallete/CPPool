@@ -5,7 +5,7 @@ void play(void)
 {
 	Window win;
 	Player		p(win);
-	EnnemyHorde n = EnnemyHorde(20, "^v^");
+	EnnemyHorde n = EnnemyHorde(30, "^v^");
 	Missile miss = Missile(20, "|");
 	n.randomPOP(win);
 	int	input = 0;
@@ -13,9 +13,9 @@ void play(void)
 	{
 		clear();
 		input = getch();
+		while (getch() != ERR);
 		miss.activate(p.getX(), p.getY(), input);
 		miss.checkDamages(n.getHorde(), n.getNumber(), win);
-//		while (getch() != ERR);
 		p.checkEnemies(n.getHorde(), n.getNumber(), win);
 		win.takeSize();
 		win.printBorder();
@@ -28,7 +28,7 @@ void play(void)
 		p.move(win);
 		p.printit(win);
 		n.move(win);
-		usleep(60000);
+		usleep(45000);
 	}
 }
 

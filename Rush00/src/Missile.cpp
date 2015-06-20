@@ -67,16 +67,17 @@ void		Missile::checkDamages(EnnemyHorde* horde, int N, Window& win)
 		{
 			if (m_missiles[i].getHP() > 0 && horde[e].getHP() > 0)
 			{
-				if (abs(m_missiles[i].getY() - horde[e].getY()) <= 1)
+				if (abs(m_missiles[i].getY() - horde[e].getY()) <= 3)
 				{
-					center = horde[e].getX() - (horde[e].getsizeX() / 2);
-					centerv = m_missiles[i].getX() - (m_missiles[i].getsizeX() / 2);
+					center = horde[e].getX() + (horde[e].getsizeX() / 3);
+					centerv = m_missiles[i].getX();
 					centerv -= center;
-					if (abs(centerv) <= 1)
+					if (abs(centerv) <= 2)
 					{
 						m_missiles[i].colision(horde[e]);
 						m_missiles[i].explode(win);
 						horde[e].die(win);
+						m_missiles[i].setHP(0);
 						m_index = i;
 					}
 				}
