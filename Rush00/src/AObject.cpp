@@ -25,6 +25,11 @@ AObject::~AObject(void)
 	return;
 }
 
+void			AObject::setHP(int i)
+{
+	m_hp = i;
+}
+
 int 			AObject::getX(void) const
 {
 	return (m_posx);
@@ -115,13 +120,15 @@ void					AObject::explode(Window& win)
 
 void					AObject::move(Window& win)
 {
-
-	if (m_posy > win.getY())
-		this->setPos(rand() % win.getX(), 0);
-	if (m_posx - m_sizex < 0 || m_posx + m_sizex > win.getX())
-		this->setDir(-this->getdirX(), this->getdirY());
-	m_posx += m_dirx;
-	m_posy += m_diry;
+	if (m_hp > 0)
+	{
+		if (m_posy > win.getY())
+			this->setPos(rand() % win.getX(), 0);
+		if (m_posx - m_sizex < 0 || m_posx + m_sizex > win.getX())
+			this->setDir(-this->getdirX(), this->getdirY());
+		m_posx += m_dirx;
+		m_posy += m_diry;
+	}
 }
 
 void				AObject::printit(Window& win) const

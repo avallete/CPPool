@@ -20,6 +20,7 @@ class AObject
 		int						getsizeY(void) const;
 		std::string&			getForm(void) const;
 		int						getHP(void) const;
+		void					setHP(int i);
 		void					setPos(int x, int y);
 		void					setDir(int x, int y);
 		void					setSpeed(int s);

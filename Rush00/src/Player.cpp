@@ -31,13 +31,6 @@ void Player::inputDirection(int ch)
 		m_dirx = -1;
 	else if (ch == 261)
 		m_dirx = 1;
-//	else if (ch == 32)
-//		shoot();
-//	else if (ch != -1)
-//	{
-//		std::cout << ch << std::endl;
-//		sleep(1);
-//	}
 }
 
 void Player::move(Window& win)

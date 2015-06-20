@@ -15,6 +15,7 @@ SRC_NAME:=ft_retro.cpp\
 			Window.cpp\
 			EnnemyHorde.cpp\
 			Player.cpp\
+			Missile.cpp\
 			AObject.cpp
 CFLAGS=-Wall -Wextra -Werror
 OBJ_PATH=./obj/
@@ -24,6 +25,7 @@ INC_NAME=ft_retro.hpp\
 			Window.hpp\
 			AObject.hpp\
 			Player.hpp\
+			Missile.hpp\
 			EnnemyHorde.hpp
 SRC=$(addprefix $(SRC_PATH), $(SRC_NAME))
 OBJ=$(addprefix $(OBJ_PATH), $(OBJ_NAME))

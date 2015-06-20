@@ -50,6 +50,7 @@ void		 EnnemyHorde::randomPOP(Window& win)
 	{
 		m_horde[i].setPos(rand()%(win.getX() - m_sizex), rand() % (win.getY() / 4));
 		m_horde[i].setDir(i % 2, 1);
+		m_horde[i].setHP(1);
 		m_horde[i].setSpeed(0);
 	}
 }
@@ -68,7 +69,7 @@ void		EnnemyHorde::die(Window& win)
 	this->setPos(rand()%(win.getX() - m_sizex), rand() % (win.getY() / 4));
 	this->setDir(0, 1);
 	this->setSpeed(0);
-	m_hp = 1;
+	this->setHP(1);
 }
 
 void		EnnemyHorde::printit(Window& win) const
