@@ -11,20 +11,22 @@
 # **************************************************************************** #
 
 SRC_PATH:=./src/
-SRC_NAME:=main.cpp\
-			Player.class.cpp
+SRC_NAME:=	ft_retro.cpp\
+			AObject.cpp\
+			Window.cpp
 CFLAGS=-Wall -Wextra -Werror
 OBJ_PATH=./obj/
 OBJ_NAME=$(SRC_NAME:.cpp=.o)
 INC_PATH=./includes/
-INC_NAME=main.hpp\
-			Player.class.hpp
+INC_NAME=ft_retro.hpp\
+			AObject.hpp\
+			Window.hpp
 SRC=$(addprefix $(SRC_PATH), $(SRC_NAME))
 OBJ=$(addprefix $(OBJ_PATH), $(OBJ_NAME))
 INCF=$(addprefix $(INC_PATH), $(INC_NAME))
 CFLAGS=-Wall -Wextra -Werror
 CC=g++
-NAME=Rush00
+NAME=ft_retro
 RED=\033[30;41m
 GREEN=\033[32m
 CYAN=\033[36m

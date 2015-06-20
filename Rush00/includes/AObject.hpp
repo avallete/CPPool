@@ -1,23 +1,27 @@
 #ifndef A_OBJECT_HPP
 #define A_OBJECT_HPP
-#include "IObject.hpp"
+#include "ft_retro.hpp"
 
-class AObject: public IObject
+class AObject
 {
 	public:
-						AObject(void);
-						AObject(AObject const & src);
-						~AObject(void);
-		int 			getposX(void) const;
-		int 			getposY(void) const;
-		int 			getdirX(void) const;
-		int 			getdirY(void) const;
-		int 			getSpeed(void) const;
-		int				getsizeX(void) const;
-		int				getsizeY(void) const;
-		std::string&	getForm(void) const;
-		int				getHP(void) const;
-		void			move(void);
+								AObject(void);
+								AObject(int posx, int posy, int dirx, int diry, int speed, int hp, std::string form);
+								AObject(AObject const & src);
+								~AObject(void);
+		int 					getX(void) const;
+		int 					getY(void) const;
+		int 					getdirX(void) const;
+		int 					getdirY(void) const;
+		int 					getSpeed(void) const;
+		int						getsizeX(void) const;
+		int						getsizeY(void) const;
+		std::string&			getForm(void) const;
+		int						getHP(void) const;
+		void					setPos(int x, int y);
+		void					setDir(int x, int y);
+		void					setSpeed(int s);
+		void					setForm(std::string form);
 
 		AObject& operator=(AObject const & rhs);
 	protected:
@@ -27,7 +31,6 @@ class AObject: public IObject
 		int			m_diry;
 		int			m_speed;
 		int			m_sizex;
-		int			m_sizey;
 		std::string	m_form; 
 		int			m_hp;
 };
