@@ -23,6 +23,7 @@ Player::~Player(void)
 
 void Player::inputDirection(int ch)
 {
+	this->input = 1;
 	if (ch == 259)
 		m_diry = -1;
 	else if (ch == 258)
@@ -35,17 +36,19 @@ void Player::inputDirection(int ch)
 
 void Player::move(Window& win)
 {
+	this->input = !this->input;
 	m_posy += (m_diry * m_speed);
 	m_posx += (m_dirx * m_speed);
 	if (m_posy < 0)
 		m_posy = 1;
-	if (m_posy >= win.getY())
+	if (m_posy >= win.getY() - 1)
 		m_posy = win.getY() - 1;
 	if (m_posx < 0)
-		m_posx = 1;
-	if (m_posx >= win.getX())
+		m_posx = 2;
+	if (m_posx >= win.getX() -1)
 		m_posx = win.getX() - 1;
-	this->setDir(0, 0);
+	if (this->input)
+	 	this->setDir(0, 0);
 }
 
 void Player::checkEnemies(EnnemyHorde* horde, int N, Window& win)

@@ -14,6 +14,7 @@ class Player: public AObject
 		void move(Window& win);
 
 		Player& operator=(Player const & rhs);
+		int input;
 	private:
 		Player(void);
 		std::string _name;
