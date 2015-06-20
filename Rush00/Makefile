@@ -6,21 +6,25 @@
 #    By: avallete <avallete@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/06/08 16:56:49 by avallete          #+#    #+#              #
-#    Updated: 2015/06/19 14:07:11 by avallete         ###   ########.fr        #
+#    Updated: 2015/06/20 04:56:54 by avallete         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRC_PATH:=./src/
-SRC_NAME:=	ft_retro.cpp\
-			AObject.cpp\
-			Window.cpp
+SRC_NAME:=ft_retro.cpp\
+			Window.cpp\
+			EnnemyHorde.cpp\
+			Player.cpp\
+			AObject.cpp
 CFLAGS=-Wall -Wextra -Werror
 OBJ_PATH=./obj/
 OBJ_NAME=$(SRC_NAME:.cpp=.o)
 INC_PATH=./includes/
 INC_NAME=ft_retro.hpp\
+			Window.hpp\
 			AObject.hpp\
-			Window.hpp
+			Player.hpp\
+			EnnemyHorde.hpp
 SRC=$(addprefix $(SRC_PATH), $(SRC_NAME))
 OBJ=$(addprefix $(OBJ_PATH), $(OBJ_NAME))
 INCF=$(addprefix $(INC_PATH), $(INC_NAME))
@@ -51,6 +55,10 @@ clean:
 fclean: clean
 	@echo "${RED} Delete $(NAME) file ${NC}"
 	@rm -rf $(NAME)
+
+debug:
+	@echo "${GREEN}Compile $(NAME) with -g $(CFLAGS)${NC}";
+	@$(CC) -g $(CFLAGS) $(OBJ) -I $(INC_PATH) -lncurses -o $(NAME)
 
 re:fclean all
 

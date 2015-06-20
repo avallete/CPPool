@@ -1,6 +1,8 @@
 #ifndef A_OBJECT_HPP
 #define A_OBJECT_HPP
-#include "ft_retro.hpp"
+#include <unistd.h>
+#include "Window.hpp"
+#include <string>
 
 class AObject
 {
@@ -22,6 +24,9 @@ class AObject
 		void					setDir(int x, int y);
 		void					setSpeed(int s);
 		void					setForm(std::string form);
+		void					move(Window& win);
+		virtual void			printit(Window& win) const;
+		virtual void			colision(AObject& obj);
 
 		AObject& operator=(AObject const & rhs);
 	protected:

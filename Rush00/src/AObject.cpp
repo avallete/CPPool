@@ -1,7 +1,7 @@
 #include "AObject.hpp"
 
 AObject::AObject(void):	m_posx(0), m_posy(0), m_dirx(0), m_diry(0), m_speed(0), 
-m_sizex(0), m_form(""), m_hp(0)
+m_sizex(0), m_form(""), m_hp(1)
 {
 	return;
 }
@@ -90,6 +90,29 @@ void					AObject::setForm(std::string form)
 	m_form = form;
 	m_sizex = form.size();
 	return;
+}
+
+void					AObject::move(Window& win)
+{
+
+	if (m_posy > win.getY())
+		this->setPos(rand() % win.getX(), 0);
+	if (m_posx - m_sizex < 0 || m_posx + m_sizex > win.getX())
+		this->setDir(-this->getdirX(), this->getdirY());
+	m_posx += m_dirx;
+	m_posy += m_diry;
+}
+
+void				AObject::printit(Window& win) const
+{
+	if (m_posx >= 0 && m_posx <= win.getX() && m_posy > 0 && m_posy < win.getY() && m_hp > 0)
+		mvwprintw(win.getWin(), m_posy, m_posx, m_form.data());
+}
+
+void				AObject::colision(AObject& obj)
+{
+	m_hp -= 1;
+	obj.m_hp -= 1;
 }
 
 AObject& AObject::operator=(AObject const & rhs)

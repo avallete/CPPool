@@ -1,18 +1,19 @@
 #ifndef WINDOW_HPP
 #define WINDOW_HPP
-#include "ft_retro.hpp"
+#include <ncurses.h>
+#include <cstdlib>
 
 class Window
 {
 	public:
 		Window(void);
-		Window(WINDOW* win);
 		Window(Window const & src);
 		~Window(void);
 		void	takeSize(void);
 		int		getX(void) const;
 		int		getY(void) const;
 		WINDOW*	getWin(void) const;
+		void	printBorder(void);
 
 		Window& operator=(Window const & rhs);
 	protected:
