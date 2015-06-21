@@ -201,5 +201,4 @@ void	menu(void)
 int main(void)
 {
 	menu();
-	sleep(1);
 }
