@@ -11,13 +11,13 @@ class Missile: public AObject
 		Missile(int N, std::string form);
 		Missile(Missile const & src);
 		~Missile(void);
-		Missile* getMissile(void) const;	
-		int	getIndex(void) const;		
+		Missile* getMissile(void) const;
+		int	getIndex(void) const;
 		int	getMax(void) const;
 		void printit(Window& win) const;
 		void move(Window& win);
 		void activate(int xpos, int ypos, int input);
-		void checkDamages(EnnemyHorde* horde, int N, Window& win);
+		void checkDamages(EnnemyHorde*, int N, Window& win);
 		void print_chargeur(Window & win);
 		Missile& operator=(Missile const & rhs);
 		int			check_m_dispo(void);

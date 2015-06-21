@@ -110,6 +110,7 @@ void		Player::print_life(Window & win) const
 		//refresh();
 	}
 }
+
 void Player::checkEnemies(EnnemyHorde* horde, int N, Window& win)
 {
 	int center;

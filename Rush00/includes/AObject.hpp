@@ -10,7 +10,7 @@ class AObject
 								AObject(void);
 								AObject(int posx, int posy, int dirx, int diry, int speed, int hp, std::string form);
 								AObject(AObject const & src);
-								~AObject(void);
+		virtual					~AObject(void);
 		int 					getX(void) const;
 		int 					getY(void) const;
 		int 					getdirX(void) const;
@@ -38,7 +38,7 @@ class AObject
 		int			m_diry;
 		int			m_speed;
 		int			m_sizex;
-		std::string	m_form; 
+		std::string	m_form;
 		int			m_hp;
 };
 #endif
