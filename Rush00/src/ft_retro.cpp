@@ -64,6 +64,8 @@ void	print_menu(Window & win)
 {
 	int		input = 0;
 	int		i = 0;
+
+	while (getch() != ERR);
 	start_color();
 	init_pair(1,COLOR_BLUE,COLOR_BLACK);
 	init_pair(2,COLOR_GREEN,COLOR_BLACK);
