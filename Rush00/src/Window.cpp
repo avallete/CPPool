@@ -1,6 +1,6 @@
 #include "ft_retro.hpp"
 
-Window::Window(void)
+Window::Window(void) : _color(0)
 {
 	initscr();
 	m_win = stdscr;
@@ -10,6 +10,12 @@ Window::Window(void)
 	keypad(stdscr, TRUE);
 	getmaxyx(m_win, m_sizey, m_sizex);
 	nodelay(stdscr, TRUE);
+	if (has_colors() == FALSE)
+	{
+		endwin();
+		std::cout << "Color are not eneable in this term." << std::endl;
+		exit(1);
+	}
 	return;
 }
 
@@ -21,9 +27,13 @@ Window::Window(Window const & src)
 
 Window::~Window(void)
 {
-	if (stdscr)
-		endwin();
+	endwin();
 	return;
+}
+
+void	Window::setColor(int i)
+{
+	_color = i;
 }
 
 int 	Window::getX(void) const
@@ -41,20 +51,29 @@ WINDOW* Window::getWin(void) const
 	return(m_win);
 }
 
-void	Window::printBorder(void)
+void	Window::printBorder()
 {
-	start_color();
-	init_pair(50,COLOR_CYAN,COLOR_BLACK);
-	attron(COLOR_PAIR(50));
+	if (_color == 1)
+	{
+		start_color();
+		init_pair(12,COLOR_GREEN,COLOR_GREEN);
+		attron(COLOR_PAIR(12));
+	}
+	if (_color == 2)
+	{
+		start_color();
+		init_pair(14,COLOR_RED,COLOR_RED);
+		attron(COLOR_PAIR(14));
+	}
+
 	for (int i = 0; i < m_sizex; i++)
-		mvprintw(0, i, "-");
+		mvprintw(getX(), i, "-");
 	for (int i = 0; i < m_sizex; i++)
 		mvprintw(getY(), i, "-");
 	for (int i = 0; i < m_sizex; i++)
 		mvprintw(i, 0, "|");
 	for (int i = 0; i < m_sizex; i++)
 		mvprintw(i, getX(), "|");
-	attroff(COLOR_PAIR(50));
 }
 
 void 	Window::takeSize(void)

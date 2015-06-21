@@ -18,8 +18,10 @@ class Missile: public AObject
 		void move(Window& win);
 		void activate(int xpos, int ypos, int input);
 		void checkDamages(EnnemyHorde* horde, int N, Window& win);
-
+		void print_chargeur(Window & win);
 		Missile& operator=(Missile const & rhs);
+		int			check_m_dispo(void);
+
 	private:
 		Missile(void);
 		Missile* m_missiles;

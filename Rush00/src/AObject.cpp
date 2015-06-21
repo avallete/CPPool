@@ -100,19 +100,29 @@ void					AObject::setForm(std::string form)
 void					AObject::explode(Window& win)
 {
 	start_color();
-	init_pair(42,COLOR_YELLOW,COLOR_BLACK);
-	init_pair(43,COLOR_RED,COLOR_BLACK);
-	attron(COLOR_PAIR(42));
+	init_pair(9,COLOR_RED,COLOR_RED);
+	init_pair(6,COLOR_RED,COLOR_BLACK);
+	init_pair(7,COLOR_YELLOW,COLOR_BLACK);
+	attron(COLOR_PAIR(9));
+	mvwprintw(win.getWin(), m_posy - 1, m_posx, ".!,");
+	mvwprintw(win.getWin(), m_posy, m_posx, "-*-");
+	mvwprintw(win.getWin(), m_posy + 1, m_posx, "'|`");
+	attroff(COLOR_PAIR(9));
+	attron(COLOR_PAIR(7));
+	mvwprintw(win.getWin(), m_posy - 1, m_posx - 1, "\\ | /");
+	mvwprintw(win.getWin(), m_posy, m_posx - 1, "- * -");
+	mvwprintw(win.getWin(), m_posy + 1, m_posx - 1, "'/ | \\");
+	attroff(COLOR_PAIR(7));
+	attron(COLOR_PAIR(6));
 	mvwprintw(win.getWin(), m_posy - 2, m_posx - 1, ". . .");
 	mvwprintw(win.getWin(), m_posy - 1, m_posx, "\\|/");
-	attroff(COLOR_PAIR(42));
-	attron(COLOR_PAIR(43));
+	attron(COLOR_PAIR(7));
 	mvwprintw(win.getWin(), m_posy, m_posx - 2, "`--+--'");
-	attroff(COLOR_PAIR(43));
-	attron(COLOR_PAIR(42));
+	attroff(COLOR_PAIR(7));
+	attron(COLOR_PAIR(6));
 	mvwprintw(win.getWin(), m_posy + 1, m_posx, " /|\\ ");
 	mvwprintw(win.getWin(), m_posy + 2, m_posx - 1, "' | '");
-	attroff(COLOR_PAIR(42));
+	attroff(COLOR_PAIR(6));
 	refresh();
 	usleep(500);
 }

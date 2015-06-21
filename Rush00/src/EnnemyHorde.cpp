@@ -47,12 +47,25 @@ int			 EnnemyHorde::getNumber(void) const
 
 void		 EnnemyHorde::randomPOP(Window& win)
 {
-	for (int i = 0; i < m_number; i++)
+	for (int a = 0; a < m_number; a++)
 	{
-		m_horde[i].setPos(rand()%(win.getX() - m_sizex), rand() % (win.getY() / 4));
-		m_horde[i].setDir(i % 2, 1);
-		m_horde[i].setHP(1);
-		m_horde[i].setSpeed(0);
+		int		i = 0;
+		i = rand() % 8;
+		if (i == 4)
+			i = 0;
+		else if (i < 4 && i >= 2)
+			i = -1;
+		else if (i < 2)
+			i = -2;
+		else if (i >= 7)
+			i = 1;
+		else
+			i = 2;
+
+		m_horde[a].setPos(rand()%(win.getX() - m_sizex), rand() % (win.getY() / 4));
+		m_horde[a].setDir(i, 1);
+		m_horde[a].setHP(1);
+		m_horde[a].setSpeed(0);
 	}
 }
 
@@ -64,41 +77,52 @@ void		 EnnemyHorde::respawn(void)
 
 void		EnnemyHorde::die(Window& win)
 {
+	int		i = 0;
+	i = rand() % 8;
+	if (i == 4)
+		i = 0;
+	else if (i < 4 && i >= 2)
+		i = -1;
+	else if (i < 2)
+		i = -2;
+	else if (i >= 7)
+		i = 1;
+	else
+		i = 2;
 	this->AObject::explode(win);
-	int dir = 0;
 	refresh();
 	usleep(10);
 	this->setPos(rand()%(win.getX() - m_sizex), 0);
-	if (m_posy <= win.getX() / 8)
-		dir = 1;
-	else if (m_posx >= win.getX() - win.getX() / 8)
-		dir = -1;
-	this->setDir(dir, 1);
+	this->setDir(i, 1);
 	this->setSpeed(0);
 	this->setHP(1);
 }
 
 void		EnnemyHorde::printit(Window& win) const
 {
+	start_color();
+	init_pair(8,COLOR_CYAN, COLOR_BLACK);
+	attron(COLOR_PAIR(8));
+
 	for (int i = 0; i < m_number; i++)
 		m_horde[i].AObject::printit(win);
+	attroff(COLOR_PAIR(8));
 }
 
 void		EnnemyHorde::move(Window& win)
 {
+	int		i = 0;
+	i = rand() % 8;
+	if (i == 4)
+		i = 0;
+	else if (i < 4)
+		i = -1;
+	else
+		i = 1;
+	this->setDir(i, 1);
+
 	for (int i = 0; i < m_number; i++)
 		m_horde[i].AObject::move(win);
-}
-
-void		EnnemyHorde::attack(AObject& target)
-{
-	for (int i = 0; i < m_number; i++)
-	{
-		if (m_horde[i].m_posx != target.getX())
-		m_horde[i].m_posx > target.getX() ? m_horde[i].m_dirx = -1 : m_horde[i].m_dirx = 1;
-		if (m_horde[i].m_posy != target.getY())
-		m_horde[i].m_posy > target.getY() ? m_horde[i].m_diry = -1 : m_horde[i].m_diry = 1;
-	}
 }
 
 EnnemyHorde* EnnemyHorde::getHorde(void)
