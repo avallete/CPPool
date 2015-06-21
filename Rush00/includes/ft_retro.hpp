@@ -2,6 +2,7 @@
 #define MAIN_HPP
 #include <iostream>
 #include <string>
+#include <stdlib.h>
 #include "Window.hpp"
 #include "AObject.hpp"
 #include "EnnemyHorde.hpp"

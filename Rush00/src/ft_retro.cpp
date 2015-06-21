@@ -1,7 +1,4 @@
 #include "ft_retro.hpp"
-#include <stdlib.h>
-
-#define SHIP "   /\\\n  /  \\\n /|/\\|\\\n/_||||_\\"
 
 int		get_difficult(int i)
 {
@@ -9,7 +6,7 @@ int		get_difficult(int i)
 		return 10;
 	else if (i == 1)
 		return 30;
-	else 
+	else
 		return 70;
 }
 void play(int i)
@@ -17,7 +14,7 @@ void play(int i)
 	i = get_difficult(i);
 	Window win;
 	Player		p(win);
-	EnnemyHorde n = EnnemyHorde(20, "^v^");
+	EnnemyHorde n = EnnemyHorde(i, "^v^");
 	Missile miss = Missile(20, "|");
 	n.randomPOP(win);
 	int	input = 0;
@@ -39,6 +36,7 @@ void play(int i)
 		p.move(win);
 		p.printit(win);
 		n.move(win);
+		while(getch() != ERR);
 		usleep(60000);
 	}
 }
@@ -63,7 +61,7 @@ void	print_menu(Window & win)
 	int		i = 0;
 	start_color();
 	init_pair(1,COLOR_BLUE,COLOR_BLACK);
-	init_pair(2,COLOR_GREEN,COLOR_BLACK);
+	init_pair(2,COLOR_CYAN,COLOR_BLACK);
 	init_pair(3,COLOR_GREEN,COLOR_RED);
 	nodelay(stdscr, FALSE);
 	while(input != KEY_ECHAP)
@@ -181,7 +179,7 @@ void	print_menu(Window & win)
 		}
 		refresh();
 		usleep(60000);
-			}
+	}
 }
 
 void	menu(void)
@@ -203,5 +201,5 @@ void	menu(void)
 int main(void)
 {
 	menu();
-	sleep(2);
+	sleep(1);
 }

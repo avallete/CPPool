@@ -10,7 +10,7 @@ Player::Player(Window& win): AObject((win.getX() / 2), (win.getY() - 5), 0, 0, 1
 	return;
 }
 
-Player::Player(Player const & src)
+Player::Player(Player const & src):AObject(src)
 {
 	*this = src;
 	return;
@@ -24,14 +24,18 @@ Player::~Player(void)
 void Player::inputDirection(int ch)
 {
 	this->input = 1;
-	if (ch == 259)
-		m_diry = -1;
-	else if (ch == 258)
-		m_diry = 1;
-	else if (ch == 260)
+	if (ch == 259 || ch == 258)
+		ch == 258 ? m_diry += 1 : m_diry -= 1;
+	else if (ch == 260 || ch == 261)
+		ch == 261 ?  m_dirx += 2 : m_dirx -= 2;
+	if (m_dirx < -2)
 		m_dirx = -2;
-	else if (ch == 261)
+	if (m_dirx > 2)
 		m_dirx = 2;
+	if (m_diry < -1)
+		m_diry = -1;
+	if (m_diry > 1)
+		m_diry = 1;
 }
 
 void Player::move(Window& win)
@@ -39,14 +43,14 @@ void Player::move(Window& win)
 	this->input = !this->input;
 	m_posy += (m_diry * m_speed);
 	m_posx += (m_dirx * m_speed);
-	if (m_posy < 0)
+	if (m_posy <= 0)
 		m_posy = 1;
 	if (m_posy >= win.getY() - 1)
 		m_posy = win.getY() - 1;
-	if (m_posx < 0)
-		m_posx = 2;
-	if (m_posx >= win.getX() -1)
-		m_posx = win.getX() - 1;
+	if (m_posx <= 0)
+		m_posx = 1;
+	if (m_posx >= win.getX() - 1)
+		m_posx = win.getX() - 2;
 	if (this->input)
 	 	this->setDir(0, 0);
 }

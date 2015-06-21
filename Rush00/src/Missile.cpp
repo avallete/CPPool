@@ -28,7 +28,8 @@ Missile::Missile(Missile const & src): AObject(src)
 
 Missile::~Missile(void)
 {
-	delete [] m_missiles;
+	if (m_missiles)
+		delete [] m_missiles;
 	return;
 }
 
@@ -49,11 +50,17 @@ int			 Missile::getMax(void) const
 
 void		Missile::activate(int xpos, int ypos, int input)
 {
-	if (input == 32 && m_index < m_max && m_missiles[m_index].getHP() == 0)
+	if (input == 32)
 	{
-		m_missiles[m_index].setPos(xpos, ypos - 1);
-		m_missiles[m_index].setHP(1);
-		m_index++;
+		for (int i = m_index; i < m_max; i++)
+		{
+			if (m_missiles[i].getHP() == 0)
+			{
+				m_missiles[i].setPos(xpos, ypos - 1);
+				m_missiles[i].setHP(1);
+		 		m_index++;
+			}
+		}
 	}
 }
 
@@ -69,16 +76,16 @@ void		Missile::checkDamages(EnnemyHorde* horde, int N, Window& win)
 			{
 				if (abs(m_missiles[i].getY() - horde[e].getY()) <= 3)
 				{
-					center = horde[e].getX() + (horde[e].getsizeX() / 3);
+					center = horde[e].getX() + (horde[e].getsizeX() / 2);
 					centerv = m_missiles[i].getX();
 					centerv -= center;
-					if (abs(centerv) <= 2)
+					if (abs(centerv) <= 3)
 					{
 						m_missiles[i].colision(horde[e]);
 						m_missiles[i].explode(win);
 						horde[e].die(win);
 						m_missiles[i].setHP(0);
-						m_index = i;
+						m_missiles[i].setPos(0, 0);
 					}
 				}
 			}
@@ -94,7 +101,7 @@ void		Missile::printit(Window& win) const
 
 void		Missile::move(Window& win)
 {
-	for (int i = 0; i < m_max; i++)	
+	for (int i = 0; i < m_max; i++)
 	{
 		if (m_missiles[i].getY() <= 0)
 		{

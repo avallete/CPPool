@@ -21,7 +21,8 @@ Window::Window(Window const & src)
 
 Window::~Window(void)
 {
-	endwin();
+	if (stdscr)
+		endwin();
 	return;
 }
 
@@ -42,14 +43,18 @@ WINDOW* Window::getWin(void) const
 
 void	Window::printBorder(void)
 {
+	start_color();
+	init_pair(50,COLOR_CYAN,COLOR_BLACK);
+	attron(COLOR_PAIR(50));
 	for (int i = 0; i < m_sizex; i++)
-		mvprintw(getX(), i, "-");	
+		mvprintw(0, i, "-");
 	for (int i = 0; i < m_sizex; i++)
-		mvprintw(getY(), i, "-");	
+		mvprintw(getY(), i, "-");
 	for (int i = 0; i < m_sizex; i++)
-		mvprintw(i, 0, "|");	
+		mvprintw(i, 0, "|");
 	for (int i = 0; i < m_sizex; i++)
-		mvprintw(i, getX(), "|");	
+		mvprintw(i, getX(), "|");
+	attroff(COLOR_PAIR(50));
 }
 
 void 	Window::takeSize(void)

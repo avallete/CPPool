@@ -22,7 +22,7 @@ EnnemyHorde::EnnemyHorde(int N, std::string form)
 	return;
 }
 
-EnnemyHorde::EnnemyHorde(EnnemyHorde const & src)
+EnnemyHorde::EnnemyHorde(EnnemyHorde const & src): AObject(src)
 {
 	*this = src;
 	return;
@@ -30,7 +30,8 @@ EnnemyHorde::EnnemyHorde(EnnemyHorde const & src)
 
 EnnemyHorde::~EnnemyHorde(void)
 {
-	delete [] m_horde;
+	if (m_horde)
+		delete [] m_horde;
 	return;
 }
 
@@ -64,10 +65,15 @@ void		 EnnemyHorde::respawn(void)
 void		EnnemyHorde::die(Window& win)
 {
 	this->AObject::explode(win);
+	int dir = 0;
 	refresh();
 	usleep(10);
-	this->setPos(rand()%(win.getX() - m_sizex), rand() % (win.getY() / 4));
-	this->setDir(0, 1);
+	this->setPos(rand()%(win.getX() - m_sizex), 0);
+	if (m_posy <= win.getX() / 8)
+		dir = 1;
+	else if (m_posx >= win.getX() - win.getX() / 8)
+		dir = -1;
+	this->setDir(dir, 1);
 	this->setSpeed(0);
 	this->setHP(1);
 }
@@ -80,8 +86,19 @@ void		EnnemyHorde::printit(Window& win) const
 
 void		EnnemyHorde::move(Window& win)
 {
-	for (int i = 0; i < m_number; i++)	
+	for (int i = 0; i < m_number; i++)
 		m_horde[i].AObject::move(win);
+}
+
+void		EnnemyHorde::attack(AObject& target)
+{
+	for (int i = 0; i < m_number; i++)
+	{
+		if (m_horde[i].m_posx != target.getX())
+		m_horde[i].m_posx > target.getX() ? m_horde[i].m_dirx = -1 : m_horde[i].m_dirx = 1;
+		if (m_horde[i].m_posy != target.getY())
+		m_horde[i].m_posy > target.getY() ? m_horde[i].m_diry = -1 : m_horde[i].m_diry = 1;
+	}
 }
 
 EnnemyHorde* EnnemyHorde::getHorde(void)
