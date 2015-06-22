@@ -40,7 +40,7 @@ std::string& 	ShrubberyCreationForm::getTarget(void) const
 void	ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 {
 	std::fstream file;
-	if (executor.getGrade() > getXGrade())
+	if (executor.getGrade() <= getXGrade())
 	{
 		file.open(m_target, std::fstream::in | std::fstream::app);
 		file << L1 << L2 << L3 << L4 << L5 << L6 << L7 << L8 << L9 << std::endl;
