@@ -48,6 +48,21 @@ void		Bureaucrat::decGrade(void)
 		m_grade += 1;
 }
 
+void		Bureaucrat::signForm(Form& f) const
+{
+	try
+	{
+		f.beSigned((Bureaucrat&)*this);
+	}
+	catch (Form::GradeTooLowException &e)
+	{
+		std::cout << m_name << " " << " cannot sign " << f << " because " << e.what() << std::endl;
+		return;
+	}
+	std::cout << m_name << " " << " signs " << f << std::endl;
+	return;
+}
+
 Bureaucrat& Bureaucrat::operator=(Bureaucrat const & rhs)
 {
 	m_grade = rhs.getGrade();

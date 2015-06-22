@@ -2,6 +2,7 @@
 #define BUREAUCRAT_HPP
 #include <iostream>
 #include <string>
+#include "Form.hpp"
 
 class Bureaucrat
 {
@@ -14,6 +15,7 @@ public:
 	int				getGrade(void) const;
 	void			incGrade(void);
 	void			decGrade(void);
+	void			signForm(Form&) const;
 
 	Bureaucrat& operator=(Bureaucrat const &);	
 private:

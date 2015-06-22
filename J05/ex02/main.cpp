@@ -6,60 +6,58 @@
 /*   By: marene <marene@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/12 13:13:18 by marene            #+#    #+#             */
-/*   Updated: 2015/04/12 15:08:47 by marene           ###   ########.fr       */
+/*   Updated: 2015/04/12 16:08:18 by marene           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 int		main(void)
 {
-	try
-	{
-		Bureaucrat	bob("bob", 151);
-	}
-	catch (std::exception const& e)
-	{
-		std::cout << "bob: " << e.what() << std::endl;
-	}
-	Bureaucrat	michel_base;
-	Bureaucrat	michel_grade("michel", 1);
-	Bureaucrat	bob_base("bob", 150);
-	Bureaucrat	bob_grade("bob_grade", 42);
+	Bureaucrat	bob("bob", 45);
+	Bureaucrat	jim("jim", 150);
+	Form		A4("A4", 45, 45);
+	Form		A5("A5", 150, 21);
 
-	std::cout
-		<< michel_base
-		<< std::endl
-		<< michel_grade
-		<< std::endl
-		<< bob_base
-		<< std::endl
-		<< bob_grade
-		<< std::endl;
 	try
 	{
-		michel_grade.incGrade();
+		Form a("fifi", 0, 2);
 	}
 	catch (std::exception const& e)
 	{
-		std::cout << michel_grade << ": "<< e.what() << std::endl;
+		std::cout << "Form a: " << e.what() << std::endl;
 	}
-	michel_base.incGrade();
-	std::cout << michel_base << std::endl;
-	michel_base.decGrade();
-	std::cout << michel_base << std::endl;
 	try
 	{
-		michel_grade.incGrade();
+		Form b("fifi", 42, 151);
 	}
 	catch (std::exception const& e)
 	{
-		std::cout << michel_grade << ": " << e.what() << std::endl;
+		std::cout << "Form b: " << e.what() << std::endl;
 	}
-	std::cout << bob_grade << std::endl;
-	bob_grade.decGrade();
-	std::cout << bob_grade << std::endl;
-	bob_grade.decGrade();
-	std::cout << bob_grade << std::endl;
+	std::cout << A4 << std::endl << A5 << std::endl << std::endl;
+	std::cout << bob << std::endl << jim << std::endl << std::endl;
+	try
+	{
+		A4.beSigned(jim);
+	}
+	catch (std::exception const& e)
+	{
+		std::cout << "Form A4: " << e.what() << std::endl;
+	}
+	std::cout << A4 << std::endl << std::endl;
+	try
+	{
+		A4.beSigned(bob);
+	}
+	catch (std::exception const& e)
+	{
+		std::cout << "Form A4: " << e.what() << std::endl;
+	}
+	std::cout << A4 << std::endl << std::endl;
+	bob.signForm(A4);
+	bob.signForm(A5);
+	jim.signForm(A4);
 }
