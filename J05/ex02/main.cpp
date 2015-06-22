@@ -13,13 +13,20 @@
 #include <iostream>
 #include "Bureaucrat.hpp"
 #include "Form.hpp"
+#include "ShrubberyCreationForm.hpp"
+#include "PresidentialPardonForm.hpp"
+#include "RobotomyRequestForm.hpp"
 
 int		main(void)
 {
 	Bureaucrat	bob("bob", 45);
 	Bureaucrat	jim("jim", 150);
+	Bureaucrat	zac("zac", 2);
 	Form		A4("A4", 45, 45);
 	Form		A5("A5", 150, 21);
+	ShrubberyCreationForm Creation("home");
+	PresidentialPardonForm Pardon("Amedy Coulibaly");
+	RobotomyRequestForm Robot("Zaz");
 
 	try
 	{
@@ -60,4 +67,15 @@ int		main(void)
 	bob.signForm(A4);
 	bob.signForm(A5);
 	jim.signForm(A4);
+	jim.executeForm(Creation);
+	bob.executeForm(Creation);
+	zac.signForm(Pardon);
+	zac.executeForm(Pardon);
+	jim.executeForm(Pardon);
+	zac.signForm(Robot);
+	zac.executeForm(Robot);
+	zac.executeForm(Robot);
+	zac.executeForm(Robot);
+	zac.executeForm(Robot);
+	jim.executeForm(Robot);
 }

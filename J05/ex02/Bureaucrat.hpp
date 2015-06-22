@@ -16,6 +16,7 @@ public:
 	void			incGrade(void);
 	void			decGrade(void);
 	void			signForm(Form&) const;
+	void			executeForm(Form const & form);
 
 	Bureaucrat& operator=(Bureaucrat const &);	
 private:

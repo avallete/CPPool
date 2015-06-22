@@ -63,6 +63,19 @@ void		Bureaucrat::signForm(Form& f) const
 	return;
 }
 
+void		Bureaucrat::executeForm(Form const & form)
+{
+	try
+	{
+		form.execute((Bureaucrat&)*this);
+	}
+	catch (Form::GradeTooLowException &e)
+	{
+		std::cout << m_name << " " << " cannot execute " << form.getName() << " because " << e.what() << std::endl;
+		return;	
+	}
+}
+
 Bureaucrat& Bureaucrat::operator=(Bureaucrat const & rhs)
 {
 	m_grade = rhs.getGrade();
