@@ -16,9 +16,12 @@
 #include "ShrubberyCreationForm.hpp"
 #include "PresidentialPardonForm.hpp"
 #include "RobotomyRequestForm.hpp"
+#include "Intern.hpp"
 
 int		main(void)
 {
+	Form*		Ptr;
+	Intern		intern;
 	Bureaucrat	bob("bob", 45);
 	Bureaucrat	jim("jim", 150);
 	Bureaucrat	zac("zac", 2);
@@ -78,4 +81,40 @@ int		main(void)
 	zac.executeForm(Robot);
 	zac.executeForm(Robot);
 	jim.executeForm(Robot);
+	try
+	{
+		Ptr = intern.makeForm("robotomy request", "Bender");
+		zac.executeForm(*Ptr);
+	}
+	catch (std::exception const &e)
+	{
+		(void)e;
+	}
+	try
+	{
+		Ptr = intern.makeForm("pardon request", "Bender");
+		zac.executeForm(*Ptr);
+	}
+	catch (std::exception const &e)
+	{
+		(void)e;
+	}
+	try
+	{
+		Ptr = intern.makeForm("shrubbery request", "Bender");
+		zac.executeForm(*Ptr);
+	}
+	catch (std::exception const &e)
+	{
+		(void)e;
+	}
+	try
+	{
+		Ptr = intern.makeForm("Some bullshit", "Bender");
+		zac.executeForm(*Ptr);
+	}
+	catch (std::exception const &e)
+	{
+		(void)e;
+	}
 }
