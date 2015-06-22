@@ -13,12 +13,14 @@ class Window
 		int		getX(void) const;
 		int		getY(void) const;
 		WINDOW*	getWin(void) const;
-		void	printBorder(void);
+		void	printBorder();
+		void	setColor(int i);
 
 		Window& operator=(Window const & rhs);
 	protected:
 		int		m_sizex;
 		int		m_sizey;
 		WINDOW* m_win;
+		int		_color;
 };
 #endif

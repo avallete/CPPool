@@ -1,44 +1,47 @@
 #include "ft_retro.hpp"
-#include <stdlib.h>
-
-#define SHIP "   /\\\n  /  \\\n /|/\\|\\\n/_||||_\\"
 
 int		get_difficult(int i)
 {
 	if (i == 0)
-		return 10;
+		return 20;
 	else if (i == 1)
-		return 30;
-	else 
-		return 70;
+		return 60;
+	else
+		return 100;
 }
-void play(int i)
+void play(int i, Window& win)
 {
+	nodelay(stdscr, TRUE);
 	i = get_difficult(i);
-	Window win;
 	Player		p(win);
-	EnnemyHorde n = EnnemyHorde(20, "^v^");
-	Missile miss = Missile(20, "|");
+	EnnemyHorde n = EnnemyHorde(i, "^v^");
+	Missile miss = Missile(10, "|");
 	n.randomPOP(win);
 	int	input = 0;
 	while (input != KEY_ECHAP && p.getHP() > 0)
 	{
 		clear();
+		win.takeSize();
+		win.printBorder();
 		input = getch();
 		miss.activate(p.getX(), p.getY(), input);
 		miss.checkDamages(n.getHorde(), n.getNumber(), win);
 		p.checkEnemies(n.getHorde(), n.getNumber(), win);
-		win.takeSize();
-		win.printBorder();
-		n.printit(win);
-		miss.move(win);
-		miss.printit(win);
-		p.printit(win);
-		p.inputDirection(input);
-		wrefresh(win.getWin());
-		p.move(win);
-		p.printit(win);
-		n.move(win);
+		p.print_life(win);
+		miss.print_chargeur(win);
+		if (p.getHP() > 0)
+		{
+			n.printit(win);
+			miss.move(win);
+			miss.printit(win);
+			p.printit(win);
+			p.inputDirection(input);
+			wrefresh(win.getWin());
+			p.move(win);
+			p.printit(win);
+			n.move(win);
+		}
+		while(getch() != ERR);
 		usleep(60000);
 	}
 }
@@ -61,13 +64,15 @@ void	print_menu(Window & win)
 {
 	int		input = 0;
 	int		i = 0;
+
+	while (getch() != ERR);
 	start_color();
 	init_pair(1,COLOR_BLUE,COLOR_BLACK);
 	init_pair(2,COLOR_GREEN,COLOR_BLACK);
 	init_pair(3,COLOR_GREEN,COLOR_RED);
-	nodelay(stdscr, FALSE);
 	while(input != KEY_ECHAP)
 	{
+		nodelay(stdscr, FALSE);
 		clear();
 		print_logo(win);
 		attron(COLOR_PAIR(2));
@@ -175,13 +180,12 @@ void	print_menu(Window & win)
 		else if (input == 10)
 		{
 			if (i >=0 && i < 3)
-				play( i);
+				play(i, win);
 			else
 				return;
 		}
 		refresh();
-		usleep(60000);
-			}
+	}
 }
 
 void	menu(void)
@@ -203,5 +207,4 @@ void	menu(void)
 int main(void)
 {
 	menu();
-	sleep(2);
 }

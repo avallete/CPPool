@@ -12,6 +12,9 @@ class Player: public AObject
 		void inputDirection(int);
 		void checkEnemies(EnnemyHorde*, int, Window&);
 		void move(Window& win);
+		void printit(Window& win) const;
+		void print_life(Window & win) const;
+
 
 		Player& operator=(Player const & rhs);
 		int input;
