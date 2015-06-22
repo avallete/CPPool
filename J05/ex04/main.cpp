@@ -6,6 +6,7 @@
 #include "PresidentialPardonForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "Intern.hpp"
+#include "OfficeBlock.hpp"
 
 int		main(void)
 {
@@ -105,5 +106,80 @@ int		main(void)
 	catch (std::exception const &e)
 	{
 		(void)e;
+	}
+	Intern      idiotOne;
+	Bureaucrat  hermes = Bureaucrat("Hermes Conrad", 37);
+	Bureaucrat  tom = Bureaucrat("Bobby Bobson", 123);
+	OfficeBlock ob;
+	ob.setIntern(idiotOne);
+	ob.setSigner(tom);
+	ob.setExecutor(hermes);
+	try {
+		ob.doBureaucracy("robotomy request", "Pigley");
+	}
+	catch (Form::GradeTooLowException)
+	{
+		std::cout << "Grade too low exception" << std::endl;
+	}
+	catch (std::exception & e)
+	{
+		std::cout << "std error" << std::endl;
+	}
+	try {
+		ob.doBureaucracy("pardon request", "Pigley");
+	}
+	catch (Form::GradeTooLowException)
+	{
+		std::cout << "Grade too low exception" << std::endl;
+	}
+	catch (std::exception & e)
+	{
+		std::cout << "std error" << std::endl;
+	}
+	try {
+		ob.doBureaucracy("shrubbery request", "Pigley");
+	}
+	catch (Form::GradeTooLowException)
+	{
+		std::cout << "Grade too low exception" << std::endl;
+	}
+	catch (std::exception & e)
+	{
+		std::cout << "std error" << std::endl;
+	}
+	ob.setSigner(zac);
+	ob.setExecutor(zac);
+		try {
+		ob.doBureaucracy("robotomy request", "Pigley");
+	}
+	catch (Form::GradeTooLowException)
+	{
+		std::cout << "Grade too low exception" << std::endl;
+	}
+	catch (std::exception & e)
+	{
+		std::cout << "std error" << std::endl;
+	}
+	try {
+		ob.doBureaucracy("pardon request", "Pigley");
+	}
+	catch (Form::GradeTooLowException)
+	{
+		std::cout << "Grade too low exception" << std::endl;
+	}
+	catch (std::exception & e)
+	{
+		std::cout << "std error" << std::endl;
+	}
+	try {
+		ob.doBureaucracy("shrubbery request", "Pigley");
+	}
+	catch (Form::GradeTooLowException)
+	{
+		std::cout << "Grade too low exception" << std::endl;
+	}
+	catch (std::exception & e)
+	{
+		std::cout << "std error" << std::endl;
 	}
 }
