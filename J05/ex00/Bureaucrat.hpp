@@ -16,11 +16,7 @@ public:
 	void			decGrade(void);
 
 	Bureaucrat& operator=(Bureaucrat const &);	
-private:
-	std::string const	m_name;
-	int					m_grade;
-protected:
-	class GradeTooHighException: public std::exception
+		class GradeTooHighException: public std::exception
 		{
 			private:
 				GradeTooHighException& operator=(GradeTooHighException const & rhs);
@@ -50,6 +46,9 @@ protected:
 				return ("Grade Too Low");
 			};
 	};	
+private:
+	std::string const	m_name;
+	int					m_grade;
 };
 std::ostream& operator<<(std::ostream&, Bureaucrat&);
 #endif

@@ -18,12 +18,8 @@ public:
 	void			signForm(Form&) const;
 	void			executeForm(Form const & form);
 
-	Bureaucrat& operator=(Bureaucrat const &);	
-private:
-	std::string const	m_name;
-	int					m_grade;
-protected:
-	class GradeTooHighException: public std::exception
+	Bureaucrat& operator=(Bureaucrat const &);
+		class GradeTooHighException: public std::exception
 		{
 			private:
 				GradeTooHighException& operator=(GradeTooHighException const & rhs);
@@ -53,6 +49,9 @@ protected:
 				return ("Grade Too Low");
 			};
 	};	
+private:
+	std::string const	m_name;
+	int					m_grade;
 };
 std::ostream& operator<<(std::ostream&, Bureaucrat&);
 #endif
