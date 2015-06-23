@@ -6,7 +6,7 @@
 #    By: avallete <avallete@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/06/08 16:56:49 by avallete          #+#    #+#              #
-#    Updated: 2015/06/23 23:11:45 by avallete         ###   ########.fr        #
+#    Updated: 2015/06/24 01:19:14 by avallete         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,6 +47,6 @@ clean:
 fclean: clean
 	@echo "${RED} Delete $(NAME) file ${NC}"
 	@rm -rf $(NAME)
-re: fclean re
+re: fclean all
 
 .PHONY: all clean fclean re
