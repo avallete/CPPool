@@ -6,6 +6,7 @@
 
 int 	main(int argc, char const *argv[])
 {
+	int 	prec = 1;
 	double	d;
 	int 	i;
 	float	fl;
@@ -16,11 +17,13 @@ int 	main(int argc, char const *argv[])
 		argv++;
 		buf = *argv;
 		std::cout << "Your input : " << buf << std::endl;
+		if (buf.find(".") != std::string::npos)
+			prec = buf.size() - buf.find(".") - 2;
 		d = static_cast<double>(strtold(buf.data(), NULL));
 		fl = static_cast<float>(d);
 		i = static_cast<int>(d);
 		c = static_cast<char>(d);
-		if (d > 0 && d < 255)
+		if (d >= 0 && d <= 255)
 		{
 			if (isprint(c))
 				std::cout << "char: '" << c << "'" << std::endl;
@@ -30,7 +33,7 @@ int 	main(int argc, char const *argv[])
 		else
 			std::cout << "char: " << "impossible" << std::endl;			
 		std::cout.setf(std::ios::fixed, std::ios_base::floatfield);
-		std::cout.precision(1);
+		std::cout.precision(prec);
 		if (d <= INT_MAX && d >= INT_MIN)
 		{
 			std::cout <<
