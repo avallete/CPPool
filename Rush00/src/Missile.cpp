@@ -88,7 +88,7 @@ void		Missile::checkDamages(EnnemyHorde* horde, int Nu, Window& win)
 					if (abs(centerv) <= 2)
 					{
 						m_missiles[i].colision(horde[e]);
-						m_missiles[i].explode(win);
+						m_missiles[i].explode(win, 1);
 						horde[e].die(win);
 						m_missiles[i].setHP(0);
 					}

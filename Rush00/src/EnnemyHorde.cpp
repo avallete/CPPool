@@ -89,7 +89,7 @@ void		EnnemyHorde::die(Window& win)
 		i = 1;
 	else
 		i = 2;
-	this->AObject::explode(win);
+	this->AObject::explode(win, 0);
 	refresh();
 	usleep(10);
 	this->setPos(rand()%(win.getX() - m_sizex), 0);

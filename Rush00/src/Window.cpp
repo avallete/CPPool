@@ -74,6 +74,9 @@ void	Window::printBorder()
 		mvprintw(i, 0, "|");
 	for (int i = 0; i < m_sizex; i++)
 		mvprintw(i, getX(), "|");
+	attroff(COLOR_PAIR(14));
+	attroff(COLOR_PAIR(12));
+
 }
 
 void 	Window::takeSize(void)

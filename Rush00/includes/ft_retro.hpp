@@ -8,6 +8,7 @@
 #include "EnnemyHorde.hpp"
 #include "Player.hpp"
 #include "Missile.hpp"
+#include "Rocket.hpp"
 #define KEY_ECHAP 27
 int     get_difficult(int i);
 void    play(int i, Window& win);

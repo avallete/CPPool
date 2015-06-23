@@ -28,7 +28,11 @@ class AObject
 		void					move(Window& win);
 		virtual void			printit(Window& win) const;
 		virtual void			colision(AObject& obj);
-		void					explode(Window& win);
+		void					explode(Window& win, int F);
+		void					print_score(Window & win) const;
+		void					setScore(void);
+		void					setScoreZero(void);
+		int						getScore(void);
 
 		AObject& operator=(AObject const & rhs);
 	protected:
@@ -40,5 +44,6 @@ class AObject
 		int			m_sizex;
 		std::string	m_form;
 		int			m_hp;
+		int static	m_score;
 };
 #endif
