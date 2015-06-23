@@ -12,18 +12,19 @@
 # **************************************************************************** #
 
 SRC_PATH:=./
-SRC_NAME:=main.cpp
+SRC_NAME:=main.cpp\
+			Base.cpp
 CFLAGS=-Wall -Wextra -Werror
 OBJ_PATH=./obj/
 OBJ_NAME=$(SRC_NAME:.cpp=.o)
 INC_PATH=./
-INC_NAME=
+INC_NAME=Base.hpp
 SRC=$(addprefix $(SRC_PATH), $(SRC_NAME))
 OBJ=$(addprefix $(OBJ_PATH), $(OBJ_NAME))
 INCF=$(addprefix $(INC_PATH), $(INC_NAME))
 CFLAGS=-Wall -Wextra -Werror
 CC=g++
-NAME=serialize
+NAME=typetest
 RED=\033[30;41m
 GREEN=\033[32m
 CYAN=\033[36m
