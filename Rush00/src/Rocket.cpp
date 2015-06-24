@@ -17,7 +17,7 @@ Rocket::Rocket(int N, std::string form)
 {
 	m_max = N;
 	m_index = 0;
-	m_rockets = new Rocket[N];
+	m_rockets = new Rocket[N]();
 	for (int i = 0; i < N; i++)
 	{
 		m_rockets[i].setForm(form);

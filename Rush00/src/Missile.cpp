@@ -5,7 +5,7 @@ Missile::Missile(int N, std::string form)
 {
 	m_max = N;
 	m_index = 0;
-	m_missiles = new Missile[N];
+	m_missiles = new Missile[N]();
 	for (int i = 0; i < N; i++)
 	{
 		m_missiles[i].setForm(form);

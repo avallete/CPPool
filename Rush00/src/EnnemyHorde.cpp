@@ -7,7 +7,7 @@ EnnemyHorde::EnnemyHorde(void): AObject()
 
 EnnemyHorde::EnnemyHorde(int N)
 {
-	m_horde = new EnnemyHorde[N];
+	m_horde = new EnnemyHorde[N]();
 	m_number = N;
 	m_hp = 1;
 	return;
@@ -15,7 +15,7 @@ EnnemyHorde::EnnemyHorde(int N)
 
 EnnemyHorde::EnnemyHorde(int N, std::string form)
 {
-	m_horde = new EnnemyHorde[N];
+	m_horde = new EnnemyHorde[N]();
 	m_number = N;
 	for (int i = 0; i < N; i++)
 		m_horde[i].setForm(form);
