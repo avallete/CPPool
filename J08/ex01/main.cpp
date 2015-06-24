@@ -1,8 +1,7 @@
-#include "span.hpp"
+#include "Span.hpp"
 
 int main()
 {
-
 	Span sp = Span(5);
 
 	sp.addNumber(5);
@@ -18,5 +17,7 @@ int main()
 	std::cout << sp.shortestSpan() << std::endl;
 
 	std::cout << sp.longestSpan() << std::endl;
+//	for (int i = 0; i < INT_MAX; i++)
+//		sp.addNumber(rand());
 	return (0);
 }
