@@ -1,7 +1,9 @@
 #ifndef SPAN_HPP
 #define SPAN_HPP
-#include <list>
+#include <vector>
 #include <iostream>
+#include <cstdlib>
+#include <algorithm>
 #include <exception>
 
 class Span
@@ -13,12 +15,15 @@ class Span
 		void addNumber(int num);
 		int shortestSpan(void);
 		int longestSpan(void);
-		std::list<int>& getList(void) const;
+		std::vector<int>& getVector(void) const;
+		unsigned int getSize() const;
+		unsigned int getIndex() const;
 
 		Span& operator=(Span const & rhs);
-		unsigned int	m_len;
 	private:
 		Span(void);
-		std::list<int> 	m_list;
+		std::vector<int> 	m_vector;
+		unsigned int		m_size;
+		unsigned int		m_index;
 };
 #endif
