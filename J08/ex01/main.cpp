@@ -32,8 +32,8 @@ int main()
     {
         std::cout << "Sososos, nop ! You can't addNumber anymore" << std::endl;
     }
+	std::cout << "Find shortest and longest Span in list size: " << ft.getSize() << std::endl;
     std::cout << ft.shortestSpan() << std::endl;
     std::cout << ft.longestSpan() << std::endl;
-    std::cout << ft.getSize() << std::endl;
 	return (0);
 }
