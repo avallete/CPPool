@@ -3,7 +3,7 @@
 int main()
 {
 	Span sp = Span(5);
-    Span ft = Span(5);
+    Span ft = Span(100000);
 
 	sp.addNumber(5);
 	sp.addNumber(3);
@@ -25,12 +25,15 @@ int main()
     }
     try
     {
-        for (int i = 0; i < 10000; i++)
+        for (int i = 0; i < 100000000; i++)
             ft.addNumber(rand());
     }
     catch (std::exception &e)
     {
         std::cout << "Sososos, nop ! You can't addNumber anymore" << std::endl;
     }
+    std::cout << ft.shortestSpan() << std::endl;
+    std::cout << ft.longestSpan() << std::endl;
+    std::cout << ft.getSize() << std::endl;
 	return (0);
 }
