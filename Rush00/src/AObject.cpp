@@ -155,10 +155,10 @@ void					AObject::move(Window& win)
 {
 	if (m_hp > 0)
 	{
-		if (m_posy > win.getY())
+		if (m_posy > win.getY() || m_posy < 0)
 			this->setPos(rand() % win.getX(), 0);
 		if (m_posx - m_sizex < 0 || m_posx + m_sizex > win.getX())
-			this->setDir(this->getdirX(), this->getdirY());
+			this->setDir(-this->getdirX(), this->getdirY());
 		m_posx += m_dirx;
 		m_posy += m_diry;
 	}
