@@ -16,6 +16,10 @@ Missile::Missile(int N, std::string form)
 
 Missile::Missile(void): AObject()
 {
+	m_max = 0;
+	m_index = 0;
+	m_missiles = NULL;
+	m_hp = 0;
 	return;
 }
 
@@ -29,7 +33,10 @@ Missile::Missile(Missile const & src): AObject(src)
 Missile::~Missile(void)
 {
 	if (m_missiles)
+	{
 		delete [] m_missiles;
+		m_missiles = NULL;
+	}
 	return;
 }
 

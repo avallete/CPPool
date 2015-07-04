@@ -1,4 +1,5 @@
 #include "ft_retro.hpp"
+#include <numeric>
 
 int		hight_score = 0;
 
@@ -14,10 +15,11 @@ int		get_difficult(int i)
 
 void	print_die(Window & win, Player p)
 {
+	(void)p;
 	start_color();
 	init_pair(6 ,COLOR_RED,COLOR_BLACK);
 	attron(COLOR_PAIR(6));
-	
+
 	mvprintw( win.getY() / 3 + win.getY() / 12 , win.getX() / 3 + win.getX() / 16, "RRRRRRRRRRRRRRRRR           IIIIIIIIII        PPPPPPPPPPPPPPPPP   ");
 	mvprintw( win.getY() / 3 + win.getY() / 12 + 1 , win.getX() / 3 + win.getX() / 16, "R::::::::::::::::R          I::::::::I        P::::::::::::::::P  ");
 	mvprintw( win.getY() / 3 + win.getY() / 12 + 2, win.getX() / 3 + win.getX() / 16, "R::::::RRRRRR:::::R         I::::::::I        P::::::PPPPPP:::::P");
@@ -40,7 +42,6 @@ void	print_die(Window & win, Player p)
 	attron(COLOR_PAIR(19));
 	mvprintw(win.getY() / 3 + win.getY() / 12 + 20, win.getX() / 3 + win.getX() / 7 - 8, "SCORE :" );
 	std::string		str;
-	str = std::to_string(p.getScore());
 	mvprintw(win.getY() / 3 + win.getY() / 12 + 20, win.getX() / 3 + win.getX() / 7, str.c_str());
 	attroff(COLOR_PAIR(19));
 
@@ -125,7 +126,6 @@ void		print_score(Window & win)
 	attron(COLOR_PAIR(19));
 	mvwprintw(win.getWin(), 1, 2, "HIGHT SCORE :" );
 	std::string		str;
-	str = std::to_string(hight_score);
 	mvwprintw(win.getWin(), 1, 16, str.c_str());
 	attroff(COLOR_PAIR(19));
 	refresh();

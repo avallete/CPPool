@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Rocket.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlevieil <jlevieil@student.42.fr>          +#+  +:+       +#+        */
+/*   By: avallete <avallete@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/06/21 17:01:41 by jlevieil          #+#    #+#             */
-/*   Updated: 2015/06/21 19:07:05 by jlevieil         ###   ########.fr       */
+/*   Updated: 2015/07/04 19:11:52 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,10 @@ Rocket::Rocket(int N, std::string form)
 
 Rocket::Rocket(void): AObject()
 {
+	m_max = 0;
+	m_index = 0;
+	m_rockets = NULL;
+	m_hp = 0;
 	return;
 }
 
@@ -41,7 +45,10 @@ Rocket::Rocket(Rocket const & src): AObject(src)
 Rocket::~Rocket(void)
 {
 	if (m_rockets)
+	{
 		delete [] m_rockets;
+		m_rockets = NULL;
+	}
 	return;
 }
 

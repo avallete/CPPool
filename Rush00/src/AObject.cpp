@@ -1,13 +1,13 @@
 #include "AObject.hpp"
 
-AObject::AObject(void):	m_posx(0), m_posy(0), m_dirx(0), m_diry(0), m_speed(0), 
+AObject::AObject(void):	m_posx(0), m_posy(0), m_dirx(0), m_diry(0), m_speed(0),
 m_sizex(0), m_form(""), m_hp(1)
 {
 	return;
 }
 
-AObject::AObject(int posx, int posy, int dirx, int diry, int speed, int hp, std::string form):	
-m_posx(posx), m_posy(posy), m_dirx(dirx), m_diry(diry), m_speed(speed), 
+AObject::AObject(int posx, int posy, int dirx, int diry, int speed, int hp, std::string form):
+m_posx(posx), m_posy(posy), m_dirx(dirx), m_diry(diry), m_speed(speed),
 m_form(form), m_hp(hp)
 {
 	m_sizex = m_form.size();
@@ -104,7 +104,6 @@ void		AObject::print_score(Window & win) const
 	attron(COLOR_PAIR(19));
 	mvwprintw(win.getWin(), 1, 2, "SCORE :" );
 	std::string		str;
-	str = std::to_string(m_score);
 	mvwprintw(win.getWin(), 1, 10, str.c_str());
 	attroff(COLOR_PAIR(19));
 }
@@ -125,7 +124,7 @@ void					AObject::explode(Window& win, int F)
 	attroff(COLOR_PAIR(19));
 	setScore();
 
-	}	
+	}
 	refresh();
 	attron(COLOR_PAIR(9));
 	mvwprintw(win.getWin(), m_posy - 1, m_posx, ".!,");
@@ -198,7 +197,7 @@ AObject& AObject::operator=(AObject const & rhs)
 	m_posy = rhs.getY();
 	m_dirx = rhs.getdirX();
 	m_diry = rhs.getdirY();
-	m_speed = rhs.getSpeed(); 
+	m_speed = rhs.getSpeed();
 	m_sizex = rhs.getsizeX();
 	m_form = rhs.getForm();
 	m_hp = rhs.getHP();

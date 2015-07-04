@@ -2,6 +2,9 @@
 
 EnnemyHorde::EnnemyHorde(void): AObject()
 {
+	m_horde = NULL;
+	m_number = 0;
+	m_hp = 1;
 	return;
 }
 
@@ -31,7 +34,10 @@ EnnemyHorde::EnnemyHorde(EnnemyHorde const & src): AObject(src)
 EnnemyHorde::~EnnemyHorde(void)
 {
 	if (m_horde)
+	{
 		delete [] m_horde;
+		m_horde = NULL;
+	}
 	return;
 }
 
