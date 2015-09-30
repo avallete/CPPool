@@ -7,8 +7,9 @@ class InfosDisplay: public IMonitorDisplay
 {
 	public:
 		InfosDisplay(ADatas& datas, int px, int py);
+		InfosDisplay(ADatas& datas);
 		void	displayNcurses(void);
-		void	displayQt(void){};
+		void	displayQt(void);
 		~InfosDisplay(void);
 	private:
 		WINDOW	*win;

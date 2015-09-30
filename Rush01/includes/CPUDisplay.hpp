@@ -8,11 +8,13 @@
 #include <sys/resource.h>
 #include "IMonitorDisplay.hpp"
 #include "ADatas.hpp"
+#include <iostream>
 
 class CPUDisplay: public IMonitorDisplay
 {
 	public:
 		CPUDisplay(ADatas& datas, int px, int py);
+		CPUDisplay(ADatas& datas);
 		~CPUDisplay(void);
 		void	displayInfos(void);
 		void	displayNcurses(void);
